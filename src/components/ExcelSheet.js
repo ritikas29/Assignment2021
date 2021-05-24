@@ -46,7 +46,18 @@ const [errorMessages, setErrorMessages] = useState([])
       { title: 'E-mail', field: "email" },
       { title: 'Phone NUmber', field: "phone" },
       { title: 'Premium', field: "hasPremium" },
-             
+       {title: 'Bids',field:"bids",
+       defaultSort: 'desc',
+       render: (rowData) => {
+        return rowData.bids.map((el) => (
+          <ul>
+          <li key={el.item_id}>{el.amount}</li>
+          </ul>
+            
+        ))
+      },
+
+    }      
     ]
       const [data, setData] = useState([]); 
         return (
