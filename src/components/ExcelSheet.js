@@ -21,6 +21,7 @@ const [errorMessages, setErrorMessages] = useState([])
        
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
+        
             var columns = [  { title: 'Name', field: "firstname" ,
             render: (rowData) => {
               return (
@@ -49,12 +50,24 @@ const [errorMessages, setErrorMessages] = useState([])
        {title: 'Bids',field:"bids",
        defaultSort: 'desc',
        render: (rowData) => {
-        return rowData.bids.map((el) => (
+         var maximum = Math.max.apply(Math,rowData.bids.map(el => el.amount));
+         console.log(maximum);
+         var minimum = Math.min.apply(Math,rowData.bids.map(el => el.amount));
+         console.log(minimum);
+         return (
+           <ul>
+             <h8>Maxi: {maximum}</h8><br/>
+             <h8>Mini: {minimum}</h8><br/>
+           </ul>
+         )
+        //return console.log(rowData.bids[0].amount);
+      /*return rowData.bids.map((el) => (// This method is used for showing values of array 
           <ul>
           <li key={el.item_id}>{el.amount}</li>
           </ul>
             
-        ))
+        )
+        )*/
       },
 
     }      
